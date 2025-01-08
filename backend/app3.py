@@ -7,11 +7,21 @@ from markupsafe import Markup
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 from flask_cors import CORS
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_BASE_URL = os.getenv('OPENAI_BASE_URL', "https://api.sambanova.ai/v1")
+MONGODB_URI = os.getenv('MONGODB_URI')
+SERPAPI_API_KEY = os.getenv('SERPAPI_API_KEY')
+
 
 # Initialize OpenAI client
 client = openai.OpenAI(
-    api_key='9bed39a3-04ca-420e-ba3b-1fcf07ed0e60', 
-    base_url="https://api.sambanova.ai/v1",
+    api_key=OPENAI_API_KEY, 
+    base_url=OPENAI_BASE_URL,
 )
 explanation = ""
 # Initialize Flask app
@@ -19,8 +29,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://clarifai.vercel.app"}})
 
 # MongoDB connection setup
-uri = "mongodb+srv://Sriram:Sriram2005@cluster0.d8bab.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-client = MongoClient(uri, server_api=ServerApi('1'))
+
 db = client['Main']
 collection = db['main']
 
@@ -44,8 +53,8 @@ def validate_inputs(error_message):
 # Function to call the Sambanova API for Q&A
 def sambanova(query, ip):
     client = openai.OpenAI(
-        api_key='9bed39a3-04ca-420e-ba3b-1fcf07ed0e60', 
-        base_url="https://api.sambanova.ai/v1",
+        api_key=OPENAI_API_KEY, 
+        base_url=OPENAI_BASE_URL,
     )
     response = client.chat.completions.create(
                 model='Meta-Llama-3.1-8B-Instruct',
@@ -82,8 +91,8 @@ def sambanova(query, ip):
 
 def sambanova1(query):
     client = openai.OpenAI(
-        api_key='9bed39a3-04ca-420e-ba3b-1fcf07ed0e60',
-        base_url="https://api.sambanova.ai/v1",
+        api_key=OPENAI_API_KEY, 
+        base_url=OPENAI_BASE_URL,
     )
 
     response = client.chat.completions.create(
@@ -97,11 +106,6 @@ def sambanova1(query):
       
 
 
-
-
-
-# SERPAPI API key for fetching related Stack Overflow answers
-SERPAPI_API_KEY = "b251739e5d7e820d401896142d92258c8372afe2f4eed0471018dfdcc71e1c00"
 
 # Function to search for related Stack Overflow questions
 def search_questions(query, tag):
