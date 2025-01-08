@@ -16,7 +16,7 @@ client = openai.OpenAI(
 explanation = ""
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://clarif-ai.vercel.app"}})
+CORS(app, resources={r"/*": {"origins": "https://clarifai.vercel.app"}})
 
 # MongoDB connection setup
 uri = "mongodb+srv://Sriram:Sriram2005@cluster0.d8bab.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
