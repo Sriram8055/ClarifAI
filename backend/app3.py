@@ -26,7 +26,7 @@ SERPAPI_API_KEY = os.getenv('SERPAPI_API_KEY')
 # explanation = ""
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins":"https://clarifai.vercel.app"}})
+CORS(app, resources={r"/*": {"origins": "https://clarifai.vercel.app"}})
 
 # MongoDB connection setup
 client = MongoClient(MONGODB_URI, server_api=ServerApi('1'))
