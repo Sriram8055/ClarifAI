@@ -24,7 +24,7 @@ const SearchForm = () => {
         const fetchHistory = async () => {
             if (activeTab === "history") {
                 try {
-                    const response = await axios.get("http://localhost:5001/history");
+                    const response = await axios.get("https://clarifai.onrender.com/history");
                     setHistory(response.data.history);
                 } catch (error) {
                     console.error("Error fetching history:", error);
@@ -51,7 +51,7 @@ const SearchForm = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:5001/",
+                "https://clarifai.onrender.com/",
                 { query, tag },
                 { headers: { "Content-Type": "application/json" } }
             );
@@ -74,7 +74,7 @@ const SearchForm = () => {
 
         try {
             const res = await axios.post(
-                "http://localhost:5001/qa",
+                "https://clarifai.onrender.com/qa",
                 { query: chatbotInput },
                 {
                     headers: {
