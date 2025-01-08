@@ -19,10 +19,7 @@ SERPAPI_API_KEY = os.getenv('SERPAPI_API_KEY')
 
 explanation = ""
 # Initialize OpenAI client
-client = openai.OpenAI(
-    api_key=OPENAI_API_KEY, 
-    base_url=OPENAI_BASE_URL,
-)
+client = MongoClient((MONGODB_URI), server_api=ServerApi('1'))
 # explanation = ""
 # Initialize Flask app
 app = Flask(__name__)
