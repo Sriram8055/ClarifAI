@@ -1,24 +1,3 @@
 # Environment files
-.env
+/backend/.env
 
-# Logs
-*.log
-logs/
-
-# Dependency directories
-node_modules/
-
-# Build files
-dist/
-build/
-
-# Cache files
-.cache/
-*.tmp
-
-# OS-specific files
-.DS_Store
-
-# Editor-specific files
-.vscode/
-.idea/
