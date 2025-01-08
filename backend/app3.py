@@ -19,19 +19,21 @@ SERPAPI_API_KEY = os.getenv('SERPAPI_API_KEY')
 
 
 # Initialize OpenAI client
-client = openai.OpenAI(
-    api_key=OPENAI_API_KEY, 
-    base_url=OPENAI_BASE_URL,
-)
-explanation = ""
+# client = openai.OpenAI(
+#     api_key=OPENAI_API_KEY, 
+#     base_url=OPENAI_BASE_URL,
+# )
+# explanation = ""
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://clarifai.vercel.app"}})
 
 # MongoDB connection setup
-
+client = MongoClient(MONGODB_URI, server_api=ServerApi('1'))
 db = client['Main']
 collection = db['main']
+# db = client['Main']
+# collection = db['main']
 
 # Function to store error information in MongoDB
 def store_error_info(error_message, llm_explanation, results):
