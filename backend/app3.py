@@ -58,6 +58,18 @@ def sambanova(query, ip):
                 messages=[{"role": "system", "content": """
                         Please provide a detailed explanation for the following error message in a well-structured markdown format. If the content is relevant to this query {query}, then take it as a reference and include the possible causes, step-by-step solutions, and any relevant code snippets or examples.
                         Note: Don't include any HTML tags and there should be an empty line between each paragraph like error message and step-by-step solution,also dont leave tab space before the code '''bash''' and must follow the below format:
+                           content that needs to be restructured and beautified for better readability and professional appearance. The file includes sections, code snippets, step-by-step solutions, and error messages. Here are the requirements:
+
+                        Organize the content into clear headings and subheadings.
+                        Properly format code snippets using fenced code blocks (e.g., ```bash for shell commands).
+                        Use ordered and unordered lists where applicable.
+                        Add consistent spacing and indentation for better readability.
+                        Ensure all steps and examples are presented in a visually appealing way.
+                        Here is the content of the Markdown file:
+
+                        [Insert the raw Markdown content here]
+
+                        Please improve the format, structure, and visual clarity of this Markdown content while retaining all information
                         ### Error Message:  
                            
                         error message
