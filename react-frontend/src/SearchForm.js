@@ -24,7 +24,7 @@ const SearchForm = () => {
         const fetchHistory = async () => {
             if (activeTab === "history") {
                 try {
-                    const response = await axios.get("https://clarifai.onrender.com/history");
+                    const response = await axios.get("https://clarifai-backend.vercel.app/history");
                     setHistory(response.data.history);
                 } catch (error) {
                     console.error("Error fetching history:", error);
@@ -51,7 +51,7 @@ const SearchForm = () => {
 
         try {
             const response = await axios.post(
-                "https://clarifai.onrender.com/",
+                "https://clarifai-backend.vercel.app/",
                 { query, tag },
                 { headers: { "Content-Type": "application/json" } }
             );
@@ -74,7 +74,7 @@ const SearchForm = () => {
 
         try {
             const res = await axios.post(
-                "https://clarifai.onrender.com/qa",
+                "https://clarifai-backend.vercel.app/qa",
                 { query: chatbotInput },
                 {
                     headers: {
